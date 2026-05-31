@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HerbalResults by Harveer Singh</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(180deg,#effff1,#ffffff);
+color:#222;
+}
+
+header{
+background:linear-gradient(135deg,#16934a,#5edc7f);
+color:white;
+text-align:center;
+padding:90px 20px;
+}
+
+.logo{
+width:110px;
+height:110px;
+margin:auto;
+border-radius:50%;
+background:rgba(255,255,255,.2);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:45px;
+backdrop-filter:blur(10px);
+}
+
+h1{
+font-size:60px;
+font-weight:800;
+margin-top:20px;
+}
+
+.founder{
+font-size:22px;
+font-weight:600;
+margin-top:10px;
+}
+
+.tagline{
+font-size:20px;
+margin-top:15px;
+opacity:.95;
+}
+
+.getlife{
+margin-top:40px;
+font-size:42px;
+font-weight:700;
+}
+
+.cross-section{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:25px;
+}
+
+.cross-box{
+background:white;
+color:#e53935;
+padding:16px 35px;
+border-radius:18px;
+font-size:22px;
+font-weight:700;
+box-shadow:0 5px 15px rgba(0,0,0,.12);
+}
+
+.contact-btn{
+margin-top:30px;
+background:white;
+color:#16934a;
+border:none;
+padding:16px 35px;
+border-radius:50px;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+}
+
+.contact-btn:hover{
+transform:translateY(-2px);
+}
+
+.counter-section{
+padding:70px 20px;
+text-align:center;
+}
+
+.counter-title{
+font-size:42px;
+color:#16934a;
+margin-bottom:20px;
+}
+
+.counter{
+font-size:70px;
+font-weight:800;
+color:#16934a;
+}
+
+.counter-text{
+font-size:20px;
+margin-top:10px;
+color:#666;
+}
+
+.section{
+padding:50px 20px;
+text-align:center;
+}
+
+.section h2{
+font-size:42px;
+color:#16934a;
+}
+
+.section p{
+margin-top:15px;
+max-width:750px;
+margin-left:auto;
+margin-right:auto;
+color:#555;
+line-height:1.7;
+}
+
+.results{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+padding:30px;
+}
+
+.card{
+background:white;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.photos{
+display:flex;
+}
+
+.photos img{
+width:50%;
+height:260px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card-content h3{
+color:#16934a;
+margin-bottom:10px;
+}
+
+.note{
+color:#555;
+line-height:1.6;
+}
+
+.coach{
+margin-top:12px;
+font-weight:600;
+color:#16934a;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">🌿</div>
+
+<h1>HerbalResults</h1>
+
+<div class="founder">
+By Harveer Singh
+</div>
+
+<div class="tagline">
+Some diets can change your entire life
+</div>
+
+<div class="getlife">
+Get A Life
+</div>
+
+<div class="cross-section">
+<div class="cross-box">❌ Disease</div>
+<div class="cross-box">❌ Medicines</div>
+</div>
+
+<button class="contact-btn" onclick="contactCoach()">
+Contact Us
+</button>
+
+</header>
+
+<section class="counter-section">
+
+<div class="counter-title">
+Success Stories
+</div>
+
+<div class="counter" id="counter">
+0
+</div>
+
+<div class="counter-text">
+Lives Inspired & Transformations Shared
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Meet Some Shining Results</h2>
+
+<p>
+Real people. Real journeys. Real transformations.
+Discover inspiring stories and healthy lifestyle changes.
+</p>
+
+</section>
+
+<div class="results" id="resultsContainer">
+<!-- Results appear here -->
+</div>
+    <style>
+
+.admin-btn{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#16934a;
+color:white;
+border:none;
+padding:16px 25px;
+border-radius:50px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.7);
+overflow:auto;
+z-index:1000;
+}
+
+.popup-content{
+background:white;
+width:90%;
+max-width:700px;
+margin:40px auto;
+padding:25px;
+border-radius:25px;
+}
+
+.popup-content h2{
+color:#16934a;
+margin-bottom:15px;
+}
+
+input,
+textarea{
+width:100%;
+padding:14px;
+margin:8px 0;
+border:1px solid #ddd;
+border-radius:12px;
+font-size:15px;
+}
+
+textarea{
+min-height:120px;
+resize:vertical;
+}
+
+.publish-btn{
+background:#16934a;
+color:white;
+border:none;
+padding:14px 22px;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
+}
+
+footer{
+background:#0c6a33;
+color:white;
+text-align:center;
+padding:35px 20px;
+margin-top:50px;
+}
+
+footer h3{
+margin-bottom:10px;
+}
+
+</style>
+
+<button class="admin-btn" onclick="openAdmin()">
+Admin Panel
+</button>
+
+<div class="popup" id="popup">
+
+<div class="popup-content">
+
+<h2>Admin Login</h2>
+
+<input
+type="email"
+id="email"
+placeholder="Admin Email">
+
+<button class="publish-btn"
+onclick="loginAdmin()">
+Login
+</button>
+
+<div id="adminSection"
+style="display:none;margin-top:20px;">
+
+<h2>Add New Result</h2>
+
+<input
+type="text"
+id="name"
+placeholder="Person Name">
+
+<input
+type="text"
+id="before"
+placeholder="Before Image URL">
+
+<input
+type="text"
+id="after"
+placeholder="After Image URL">
+
+<textarea
+id="note"
+placeholder="Short Note">
+</textarea>
+
+<input
+type="text"
+id="coach"
+placeholder="Health Coach Number">
+
+<button
+class="publish-btn"
+onclick="addResult()">
+Publish Result
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<h3>🌿 HerbalResults by Harveer Singh</h3>
+
+<p>
+Helping people move towards a healthier lifestyle.
+</p>
+
+</footer>
+
+<script>
+
+let successCount = 0;
+
+function animateCounter(){
+
+let current = 0;
+
+let interval = setInterval(() => {
+
+if(current >= successCount){
+clearInterval(interval);
+}
+else{
+current++;
+document.getElementById("counter").innerText = current;
+}
+
+},30);
+
+}
+
+function contactCoach(){
+
+alert(
+"Harveer Singh Session is being created..."
+);
+
+const message =
+"Dear Mr. Harveer Singh, I would like to request a consultation session at your convenience. Please let me know your availability. Thank you for your time and consideration.";
+
+const whatsappURL =
+"https://wa.me/918527868648?text=" +
+encodeURIComponent(message);
+
+setTimeout(() => {
+window.location.href = whatsappURL;
+},2000);
+
+}
+
+function openAdmin(){
+document.getElementById("popup").style.display =
+"block";
+}
+
+function loginAdmin(){
+
+const email =
+document.getElementById("email").value;
+
+if(email === "haveer71@gmail.com"){
+
+document.getElementById("adminSection")
+.style.display = "block";
+
+alert("Welcome Admin");
+
+}
+else{
+alert("Access Denied");
+}
+
+}
+
+function addResult(){
+
+const name =
+document.getElementById("name").value;
+
+const before =
+document.getElementById("before").value;
+
+const after =
+document.getElementById("after").value;
+
+const note =
+document.getElementById("note").value;
+
+const coach =
+document.getElementById("coach").value;
+
+const card = `
+
+<div class="card">
+
+<div class="photos">
+
+<img src="${before}">
+
+<img src="${after}">
+
+</div>
+
+<div class="card-content">
+
+<h3>${name}</h3>
+
+<p class="note">
+${note}
+</p>
+
+<div class="coach">
+Health Coach No: ${coach}
+</div>
+
+</div>
+
+</div>
+
+`;
+
+document.getElementById(
+"resultsContainer"
+).innerHTML += card;
+
+successCount++;
+
+document.getElementById(
+"counter"
+).innerText = successCount;
+
+document.getElementById("name").value = "";
+document.getElementById("before").value = "";
+document.getElementById("after").value = "";
+document.getElementById("note").value = "";
+document.getElementById("coach").value = "";
+
+alert("Result Published!");
+
+}
+
+window.onclick = function(event){
+
+const popup =
+document.getElementById("popup");
+
+if(event.target === popup){
+popup.style.display = "none";
+}
+
+}
+
+</script>
+
+</body>
+</html>
